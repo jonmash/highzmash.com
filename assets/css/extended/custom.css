@@ -1,0 +1,354 @@
+/* ============================================================
+   High-Z Custom Theme — PCB-Inspired Dark Aesthetic
+   highzmash.com | Jon Mash
+   ============================================================ */
+
+/* --- Core Color Palette --- */
+:root {
+  --pcb-green: #00cc6a;
+  --pcb-green-bright: #00ff88;
+  --pcb-green-dim: #007a40;
+  --pcb-bg-deep: #0a0e0a;
+  --pcb-bg-card: #0f1510;
+  --pcb-bg-surface: #141a14;
+  --pcb-border: #1e2a1e;
+  --pcb-text: #c8d8c8;
+  --pcb-text-muted: #6b8a6b;
+  --pcb-copper: #b87333;
+  --pcb-gold: #d4a843;
+  --pcb-white: #e8f0e8;
+  --pcb-grid: rgba(0, 204, 106, 0.04);
+  --pcb-trace: rgba(0, 204, 106, 0.08);
+}
+
+/* --- Dark Mode Overrides --- */
+.dark {
+  --theme: var(--pcb-bg-deep);
+  --entry: var(--pcb-bg-card);
+  --primary: var(--pcb-green);
+  --secondary: var(--pcb-text-muted);
+  --border: var(--pcb-border);
+  --content: var(--pcb-text);
+  --hljs-bg: #0d1a0d;
+  --code-bg: #0d1a0d;
+  --nav-item-hover: var(--pcb-green);
+}
+
+/* --- PCB Grid Background on Body --- */
+body {
+  background-color: var(--pcb-bg-deep);
+  background-image:
+    linear-gradient(var(--pcb-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--pcb-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* --- Subtle PCB via-hole dots at intersections --- */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(0, 204, 106, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* --- Main Content Layer --- */
+#page-header, main, footer, .post-header, .post-content, nav {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Header / Nav --- */
+header {
+  background: rgba(10, 14, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--pcb-border);
+}
+
+/* PCB trace accent line under header */
+header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--pcb-green), var(--pcb-green-bright), var(--pcb-green), transparent);
+  opacity: 0.6;
+}
+
+.logo, .logo a {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--pcb-green-bright) !important;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+/* --- Navigation Links --- */
+nav a {
+  color: var(--pcb-text-muted) !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+nav a:hover, nav a.active {
+  color: var(--pcb-green-bright) !important;
+  text-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
+}
+
+/* --- Profile / Home Section --- */
+.profile {
+  padding: 3rem 0;
+}
+
+.profile-mode .profile_inner h1 {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--pcb-green-bright);
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 40px rgba(0, 255, 136, 0.2);
+}
+
+/* Subtitle — "High Impedance" tagline treatment */
+.profile_inner p {
+  color: var(--pcb-text);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Profile buttons */
+.profile_inner .buttons a {
+  border: 1px solid var(--pcb-green-dim);
+  background: transparent;
+  color: var(--pcb-green) !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.2rem;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.profile_inner .buttons a:hover {
+  background: rgba(0, 204, 106, 0.1);
+  border-color: var(--pcb-green-bright);
+  color: var(--pcb-green-bright) !important;
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.15);
+}
+
+/* --- Post Cards --- */
+.post-entry {
+  background: var(--pcb-bg-card);
+  border: 1px solid var(--pcb-border);
+  border-radius: 4px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* PCB trace left-edge accent */
+.post-entry::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, transparent, var(--pcb-green-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.post-entry:hover {
+  border-color: var(--pcb-green-dim);
+  box-shadow: 0 4px 20px rgba(0, 204, 106, 0.08);
+}
+
+.post-entry:hover::before {
+  opacity: 1;
+}
+
+.entry-header h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--pcb-white);
+  transition: color 0.2s ease;
+}
+
+.post-entry:hover .entry-header h2 {
+  color: var(--pcb-green-bright);
+}
+
+.entry-content {
+  color: var(--pcb-text);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.entry-footer {
+  color: var(--pcb-text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+}
+
+/* --- Tags --- */
+.post-tags a {
+  background: rgba(0, 204, 106, 0.08);
+  border: 1px solid var(--pcb-green-dim);
+  color: var(--pcb-green) !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+  transition: all 0.15s ease;
+}
+
+.post-tags a:hover {
+  background: rgba(0, 204, 106, 0.18);
+  color: var(--pcb-green-bright) !important;
+}
+
+/* --- Post Single --- */
+.post-header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--pcb-white);
+  line-height: 1.25;
+}
+
+.post-meta {
+  color: var(--pcb-text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+}
+
+.post-content {
+  color: var(--pcb-text);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  color: var(--pcb-white);
+  font-weight: 700;
+  margin-top: 2.5rem;
+}
+
+.post-content h2::before {
+  content: '// ';
+  color: var(--pcb-green-dim);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+}
+
+/* --- Links --- */
+.post-content a,
+a {
+  color: var(--pcb-green);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.post-content a:hover,
+a:hover {
+  color: var(--pcb-green-bright);
+}
+
+/* --- Code Blocks --- */
+.highlight, pre {
+  background: #0d1a0d !important;
+  border: 1px solid var(--pcb-border);
+  border-left: 3px solid var(--pcb-green-dim);
+  border-radius: 4px;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.88em;
+  color: var(--pcb-green);
+  background: rgba(0, 204, 106, 0.08);
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+
+/* --- Blockquotes (pull-quote style) --- */
+.post-content blockquote {
+  border-left: 3px solid var(--pcb-green);
+  background: rgba(0, 204, 106, 0.05);
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-radius: 0 4px 4px 0;
+  color: var(--pcb-text);
+  font-style: italic;
+}
+
+/* --- Table of Contents --- */
+.toc {
+  background: var(--pcb-bg-card);
+  border: 1px solid var(--pcb-border);
+  border-top: 2px solid var(--pcb-green-dim);
+  border-radius: 4px;
+}
+
+/* --- Footer --- */
+footer {
+  border-top: 1px solid var(--pcb-border);
+  color: var(--pcb-text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+}
+
+/* Subtle PCB footprint pattern in footer */
+footer::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pcb-green-dim), transparent);
+  margin-bottom: 1rem;
+  opacity: 0.4;
+}
+
+/* --- Social Icons --- */
+.social-icons svg {
+  fill: var(--pcb-text-muted);
+  transition: fill 0.2s ease;
+}
+
+.social-icons a:hover svg {
+  fill: var(--pcb-green-bright);
+}
+
+/* --- Reading Progress / Selection --- */
+::selection {
+  background: rgba(0, 204, 106, 0.25);
+  color: var(--pcb-white);
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--pcb-bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pcb-green-dim);
+  border-radius: 3px;
+}
+
+/* --- Load JetBrains Mono from Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+}
