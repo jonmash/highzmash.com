@@ -27,12 +27,25 @@ git submodule update --init --recursive
 ### Run Locally
 
 ```bash
-hugo server -D
+hugo server -D --baseURL http://localhost:1313/
 ```
 
 Visit `http://localhost:1313` — live reload is enabled.
 
 The `-D` flag includes draft posts. Remove it to preview only published content.
+
+**Tip:** If CSS or template changes aren't showing up, use:
+```bash
+hugo server -D --disableFastRender --baseURL http://localhost:1313/
+```
+
+Or clear the cache manually:
+```bash
+rm -rf public/ resources/
+hugo server -D --baseURL http://localhost:1313/
+```
+
+**Note:** The `--baseURL` flag is important for local development so assets (images, CSS) load from localhost instead of the production URL.
 
 ---
 
@@ -103,7 +116,9 @@ After this, GitHub Actions will handle all future deployments via Wrangler.
 Custom styles live in `assets/css/extended/custom.css` — this file is loaded by PaperMod automatically and overrides default styles.
 
 The PCB-inspired theme features:
-- **Background:** Dark (#0a0e0a) with subtle PCB grid pattern
+- **Light mode:** Clean, minimal design with subtle green highlights
+- **Dark mode:** PCB aesthetic with grid pattern, trace green accents, and glow effects
+- **Background:** Light gray (#f8faf8) or dark (#0a0e0a) with PCB grid pattern
 - **Accent:** Trace green (#00cc6a / #00ff88)
 - **Typography:** Inter (body) + JetBrains Mono (code, UI elements)
 - **Code blocks:** Dracula syntax theme with green left-border trace accent
