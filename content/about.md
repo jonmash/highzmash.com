@@ -30,6 +30,6 @@ I write from experience, not theory. If something I say is wrong, I want to hear
 ---
 ## Get in touch
 - **Engineering work:** [mashpcb.com](https://mashpcb.com)
-- **Profession Resume/Portfolio:** [jonmash.com](https://jonmash.com)
+- **Professional Portfolio:** [jonmash.com](https://jonmash.com)
 - **Email:** [jon@mashpcb.com](mailto:jon@mashpcb.com)
 - **LinkedIn:** [linkedin.com/in/jonmash](https://linkedin.com/in/jonmash)
