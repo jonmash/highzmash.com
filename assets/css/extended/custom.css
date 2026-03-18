@@ -5,16 +5,16 @@
 
 /* --- Core Color Palette --- */
 :root {
-  --pcb-green: #00cc6a;
-  --pcb-green-bright: #00ff88;
-  --pcb-green-dim: #007a40;
+  --pcb-green: #4d9068;
+  --pcb-green-bright: #00cc6a;
+  --pcb-green-dim: #3d7054;
   --pcb-bg-deep: #0a0e0a;
   --pcb-bg-card: #0f1510;
   --pcb-border-dark: #1e2a1e;
-  --pcb-text: #c8d8c8;
+  --pcb-text: #c8d4c8;
   --pcb-text-muted: #6b8a6b;
   --pcb-white: #e8f0e8;
-  --pcb-grid: rgba(0, 204, 106, 0.04);
+  --pcb-grid: rgba(77, 144, 104, 0.04);
 }
 
 /* --- Light Mode (Default) --- */
@@ -31,7 +31,8 @@
 }
 
 /* --- Dark Mode --- */
-body.dark {
+body.dark,
+:root[data-theme="dark"] {
   --theme: var(--pcb-bg-deep);
   --entry: var(--pcb-bg-card);
   --primary: var(--pcb-green);
@@ -369,4 +370,22 @@ body.dark ::-webkit-scrollbar-thumb {
 ::selection {
   background: rgba(0, 204, 106, 0.25);
   color: var(--pcb-white);
+}
+
+/* --- Post Entry Clickable Heading Fix --- */
+.post-entry {
+  position: relative;
+}
+
+.post-entry .entry-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.post-entry .entry-header h2 {
+  cursor: pointer;
 }
