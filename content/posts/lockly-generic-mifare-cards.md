@@ -134,6 +134,8 @@ Present the programmed card to your lock through the Lockly Home app's standard 
 - The economics are significant. Lockly charges about $8 per card; generics cost $0.30 to $0.50. A Proxmark3 is a one-time investment, and once you have the key, programming additional cards takes seconds each.
 - This process does not weaken the security of your lock in any way.
 
+**Update:** If you need to provision more than a few cards, see the [followup post on batch provisioning automation](/posts/lockly-card-provisioning-automation/).
+
 ## Security Context: What This Tells Us About MIFARE Classic
 
 MIFARE Classic 1K is widely deployed but offers minimal cryptographic security against a determined attacker. The CRYPTO1 cipher it uses was publicly broken in 2008, and key recovery tools are freely available and well-documented.
