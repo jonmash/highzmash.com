@@ -18,7 +18,7 @@ params:
   description: "Engineering leadership, PCB design war stories, and the occasional side project. By Jon Mash."
   keywords: [Engineering, Leadership, PCB Design, Hardware, Electronics, Blog]
   author: Jon Mash
-  images: ["/images/og-card.png"]
+  images: ["/images/avatar.png"]
   DateFormat: "January 2, 2006"
   defaultTheme: dark
   disableThemeToggle: false
