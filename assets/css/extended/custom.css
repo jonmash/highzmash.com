@@ -389,3 +389,82 @@ body.dark ::-webkit-scrollbar-thumb {
 .post-entry .entry-header h2 {
   cursor: pointer;
 }
+
+/* --- Contact Form (MAS-21) --- */
+.contact-form {
+  max-width: 32rem;
+  margin: 2rem 0;
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.2rem;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--secondary);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--content);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+body.dark .contact-form input[type="text"]:focus,
+body.dark .contact-form input[type="email"]:focus,
+body.dark .contact-form textarea:focus {
+  border-color: var(--pcb-green-bright);
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.15);
+}
+
+.contact-form__botcheck {
+  position: absolute;
+  left: -9999px;
+}
+
+.contact-form__submit {
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.4rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contact-form__submit:hover {
+  background: rgba(0, 204, 106, 0.1);
+}
+
+body.dark .contact-form__submit {
+  border-color: var(--pcb-green-dim);
+}
+
+body.dark .contact-form__submit:hover {
+  border-color: var(--pcb-green-bright);
+  color: var(--pcb-green-bright);
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.15);
+}
