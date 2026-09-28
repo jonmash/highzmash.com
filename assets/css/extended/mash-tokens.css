@@ -1,0 +1,116 @@
+/* Vendored from jonmash/mash-design-tokens @ a7a04452 — do not edit here, edit source and re-copy. See MAS-12. */
+/*
+  Mash Engineering — Design Tokens (MAS-5)
+  Shared family across mashengineer.com (firm), jonmash.com (person), highzmash.com (lab).
+  One token set; each property overrides only --color-accent-800/900/050 to its own hue.
+  This file is the source of truth. Do not inline a value that exists here.
+*/
+
+:root {
+  /* ---- Color: neutrals (ink / paper) ---- */
+  --color-paper-0: #ffffff;       /* page background */
+  --color-paper-50: #f3f5f8;      /* alt section background */
+  --color-hairline-200: #d7dce3;  /* decorative dividers only — 1.38:1, non-text */
+  --color-outline-600: #74808c;   /* input borders, icon-only control borders — 4.03:1 on paper-0 */
+
+  --color-ink-900: #12161c;       /* headings, primary body text — 18.15:1 on paper-0 */
+  --color-ink-700: #454c58;       /* secondary text — 8.65:1 on paper-0 */
+  --color-ink-500: #5b6472;       /* tertiary text, meta, placeholders — 5.98:1 on paper-0 */
+  --color-ink-400: #8b93a0;       /* disabled text ONLY — exempt from contrast (WCAG 1.4.3) */
+
+  /* ---- Color: accent — mashengineer.com hue (blueprint blue) ---- */
+  --color-accent-800: #1a3e9e;    /* links, primary CTA fill, focus ring — 9.43:1 on paper-0 */
+  --color-accent-900: #142f78;    /* hover/active/pressed — 12.30:1 on paper-0 */
+  --color-accent-050: #eaf0fe;    /* tag/pill background, selected background */
+
+  /* ---- Color: semantic ---- */
+  --color-danger-800: #9a2a22;    /* error text/icon/border — 7.70:1 on paper-0 */
+  --color-danger-050: #fbeae8;    /* error background tint */
+  --color-success-800: #1e6b3d;   /* success text/icon — 6.51:1 on paper-0 */
+
+  --color-focus-ring: var(--color-accent-800); /* 9.43:1 on paper-0 — verified below */
+
+  /* ---- Type ---- */
+  --font-family-base:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Fluid clamp(min, preferred, max) tuned for 390px -> 1440px viewport */
+  --text-display: clamp(2.25rem, 1.7rem + 2.6vw, 3.25rem);   /* 36px -> 52px, h1 */
+  --text-h2: clamp(1.75rem, 1.5rem + 1.1vw, 2.25rem);        /* 28px -> 36px */
+  --text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);        /* 20px -> 24px */
+  --text-h4: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);     /* 17px -> 19px */
+  --text-body-lg: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem); /* 18px -> 21px, lede */
+  --text-body: 1.0625rem;   /* 17px, fixed — base reading size */
+  --text-body-sm: 0.9375rem; /* 15px, UI labels, nav, buttons */
+  --text-meta: 0.8125rem;    /* 13px, captions, eyebrows, source notes */
+  --text-stat: clamp(1.75rem, 1.5rem + 1vw, 2.25rem); /* proof-strip numbers */
+
+  --leading-display: 1.08;
+  --leading-h2: 1.15;
+  --leading-h3: 1.25;
+  --leading-body-lg: 1.55;
+  --leading-body: 1.65;
+  --leading-tight-ui: 1.4;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --measure-body: 68ch;   /* paragraph max-width */
+  --measure-lede: 34ch;   /* hero lede max-width, short + confident */
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+  --space-9: 6rem;     /* 96px */
+  --space-10: 8rem;    /* 128px — desktop section rhythm */
+
+  /* ---- Radii ---- */
+  --radius-sm: 4px;   /* inputs, tags */
+  --radius-md: 8px;   /* cards, buttons */
+  --radius-lg: 16px;  /* rare, large containers */
+  --radius-pill: 999px; /* status chips */
+
+  /* ---- Elevation (flat system — one hairline, one shadow, used sparingly) ---- */
+  --shadow-card: 0 1px 2px rgba(18, 22, 28, 0.04), 0 4px 12px rgba(18, 22, 28, 0.06);
+
+  /* ---- Focus ---- */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+
+  /* ---- Motion ---- */
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- Layout ---- */
+  --content-max: 72rem;      /* 1152px outer container */
+  --grid-gutter: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --grid-gutter: var(--space-8);
+  }
+}
+
+/* Reduced motion: every transition/animation token collapses to near-zero.
+   Nothing essential to understanding content depends on motion. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0ms;
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}
