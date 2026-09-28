@@ -84,7 +84,7 @@ params:
     - name: rss
       url: "/index.xml"
     - name: email
-      url: "mailto:jon@mashpcb.com"
+      url: "mailto:jon@mashengineer.com"
 
   # MAS-12: the site itself is the Blog entity in the cross-property JSON-LD
   # graph. @id linkage back to jonmash.com's Person lives in the
@@ -143,6 +143,10 @@ menu:
       name: About
       url: /about/
       weight: 40
+    - identifier: contact
+      name: Contact
+      url: /contact/
+      weight: 50
 
 # Enable search
 outputs:
