@@ -1,0 +1,59 @@
+/* Vendored from jonmash/mash-design-tokens @ a7a04452 — do not edit here, edit source and re-copy. See MAS-12. */
+/*
+  Mash Engineering — Identity Strip component (MAS-12)
+  Pairs with tokens.css. Same markup, same CSS, on every property:
+  mashengineer.com, jonmash.com, highzmash.com. Do not fork this file —
+  edit here, re-vendor everywhere else.
+
+  Markup contract (per-site config is which item is aria-current and
+  which items are <a> vs plain <span>; the DOM shape below never changes):
+
+  <div class="identity-strip">
+    <div class="container identity-strip__row">
+      <nav aria-label="Jon Mash's sites">
+        <a href="https://jonmash.com/">Jon Mash</a>
+        <span class="identity-strip__sep">·</span>
+        <span aria-current="page">Consulting</span>
+      </nav>
+    </div>
+  </div>
+*/
+
+.container {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--grid-gutter);
+}
+
+.identity-strip {
+  border-bottom: 1px solid var(--color-hairline-200);
+  background: var(--color-paper-0);
+}
+.identity-strip__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 2.25rem; /* 36px: wayfinding, not a primary target — 44px reserved for real nav */
+  font-size: var(--text-meta);
+  color: var(--color-ink-500);
+}
+.identity-strip a {
+  color: var(--color-ink-500);
+  font-weight: var(--weight-medium);
+  padding: var(--space-1) var(--space-1);
+  min-height: 24px; /* meets 2.5.8 Target Size Minimum (24x24) for a secondary/wayfinding link */
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.identity-strip a:hover { color: var(--color-accent-800); }
+.identity-strip a:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
+}
+.identity-strip [aria-current='page'] {
+  color: var(--color-ink-900);
+  font-weight: var(--weight-semibold);
+}
+.identity-strip__sep { color: var(--color-hairline-200); }

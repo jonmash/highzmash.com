@@ -86,6 +86,21 @@ params:
     - name: email
       url: "mailto:jon@mashpcb.com"
 
+  # MAS-12: the site itself is the Blog entity in the cross-property JSON-LD
+  # graph. @id linkage back to jonmash.com's Person lives in the
+  # schema_json.html partial override, not here — this only sets @type.
+  #
+  # sameAs is set explicitly rather than left to fall back to socialIcons
+  # (schema_json.html's default): that list includes the RSS feed as a
+  # relative URL and a mailto: link, neither of which is a profile
+  # identifying the same entity elsewhere — schema.org's sameAs is for
+  # that, not for reusing the header's icon list.
+  schema:
+    publisherType: "Blog"
+    sameAs:
+      - "https://github.com/jonmash"
+      - "https://linkedin.com/in/jonmash"
+
   analytics:
     google:
       SiteVerificationTag: ""
