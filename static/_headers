@@ -1,0 +1,12 @@
+# Cloudflare Pages Headers Configuration
+# https://developers.cloudflare.com/pages/platform/headers/
+#
+# Overrides the Access-Control-Allow-Origin: * header Cloudflare Pages
+# serves by default on every response (MAS-20) - not needed for a static
+# blog/lab site with no API, and an unnecessary CORS wildcard exposure.
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  ! Access-Control-Allow-Origin
