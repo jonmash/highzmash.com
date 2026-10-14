@@ -1,12 +1,19 @@
 <!--
-  Shared contact pattern (MAS-21): same Web3Forms access key and hCaptcha
-  sitekey as mash-engineering-website's Contact component. Plain HTML POST
-  with no client-side handler, so submission works with JavaScript disabled;
-  hCaptcha's script is the only JS dependency, and it degrades to Web3Forms
-  rejecting the submission rather than a broken page.
+  highzmash.com's own Web3Forms access key (previously shared with
+  mash-engineering-website's Contact component - given its own key on
+  2026-10-02 so submissions from each property are distinguishable in the
+  Web3Forms dashboard, not just by subject line). hCaptcha script below
+  loads with recaptchacompat=off - without it, hCaptcha's default
+  compatibility shim injects a g-recaptcha-response field alongside the
+  real response, which Web3Forms' backend misreads as a reCAPTCHA
+  (paid-only) submission attempt and rejects. Same bug found and fixed on
+  jonmash.com's contact form; this is a plain HTML POST with no client-side
+  handler, so submission works with JavaScript disabled; hCaptcha's script
+  is the only JS dependency, and it degrades to Web3Forms rejecting the
+  submission rather than a broken page.
 -->
 <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
-  <input type="hidden" name="access_key" value="a9c2252a-3838-4c21-92d3-a7bfb749cbff">
+  <input type="hidden" name="access_key" value="9497b803-8dab-4e6b-b195-c10521713d8f">
   <input type="hidden" name="subject" value="New message from highzmash.com contact form">
   <input type="hidden" name="redirect" value="https://highzmash.com/contact-success/">
   <input type="checkbox" name="botcheck" class="contact-form__botcheck" tabindex="-1" aria-hidden="true" autocomplete="off">
@@ -37,4 +44,4 @@
 
   <button type="submit" class="contact-form__submit">Send message</button>
 </form>
-<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+<script src="https://js.hcaptcha.com/1/api.js?recaptchacompat=off" async defer></script>
